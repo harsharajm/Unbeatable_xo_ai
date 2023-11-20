@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link rel='stylesheet'href="style.css">
+</head>
+<body>
+    <div class="all">
+        <div class="header">
+            <div class="box">
+                <h1>TicTacToe</h1>
+                <p>Change mode :</p>
+                <div class ="dropdown"onclick="changemode()">Versus AI</div>
+            </div>
+            <div class="scores">
+                <h2><span id="won">0</span> You</h2>
+                <h2><span id="lost">0</span> AI</h2>
+                <h2><span id="draws">0</span> Draws</h2>
+            </div>
+        </div>
+        
+
+
+        <div class="cont x">
+            <div class="cell"onclick="clicked(0)"></div>
+            <div class="cell"onclick="clicked(1)"></div>
+            <div class="cell"onclick="clicked(2)"></div>
+            <div class="cell"onclick="clicked(3)"></div>
+            <div class="cell"onclick="clicked(4)"></div>
+            <div class="cell"onclick="clicked(5)"></div>
+            <div class="cell"onclick="clicked(6)"></div>
+            <div class="cell"onclick="clicked(7)"></div>
+            <div class="cell"onclick="clicked(8)"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
