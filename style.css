@@ -17,7 +17,7 @@
 }
 
 .dropdown{
-  width: var(--cell-size);
+  width: auto;
   height: 40px;
   background-color: whitesmoke;
   font-size: 20px;
@@ -61,7 +61,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: white;
-  transition: border-radius .5s;
+  transition: border-radius .75s;
 }
 
 
