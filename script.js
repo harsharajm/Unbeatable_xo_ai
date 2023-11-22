@@ -11,7 +11,7 @@ let aimode = true; // Indicates whether the game is against AI or not
 let wins = document.getElementById("won"); // HTML element displaying the number of wins
 let losses = document.getElementById("lost"); // HTML element displaying the number of losses
 let draws = document.getElementById("draws"); // HTML element displaying the number of draws
-let gameover = false; // Flag to indicate whether the game is over
+let result = document.querySelector(".result");// HTML element to display who won.
 const winningCombinations = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8],
   [0, 3, 6], [1, 4, 7], [2, 5, 8],
@@ -20,10 +20,6 @@ const winningCombinations = [
 
 // Handle user click on a cell
 function clicked(i) {
-  if (gameover) {
-    reset();
-    return;
-  }
 
   // Check if the cell is empty
   if (cellElements[i].classList.value == 'cell') {
@@ -59,6 +55,7 @@ function clicked(i) {
       if (result == -1 && aimode) {
         losses.innerHTML = parseInt(losses.innerHTML) + 1;
       }
+      setTimeout(reset,1500)
     }
 
     // If it's the AI's turn, let it make a move
@@ -80,12 +77,20 @@ function checkWin() {
       cellElements[c].style.borderRadius = "35%";
 
       // Return the winner (1 for X, -1 for O)
-      return board[a] === "X" ? 1 : -1;
+      if (board[a] === "X"){
+        result.innerHTML = "X WON!";
+        return 1;
+      }
+      if (board[a] === "O"){
+        result.innerHTML = "O WON!";
+        return -1
+      }
     }
   }
 
   // If no winner and the board is full, it's a draw
   if (!board.includes(0)) {
+    result.innerHTML = "It's a Draw.";
     return 0;
   }
 
@@ -102,20 +107,21 @@ function reset() {
     board[i] = 0;
   }
   Xturn = true;
+  result.innerHTML = '';
   gameover = false; // Reset the gameover flag
 }
 
 // Function to toggle between game modes (Versus AI and Practice)
 function changemode() {
   reset();
-  aimode = !aimode;
-  if (dropdown.innerHTML == "Versus AI") {
-    dropdown.innerHTML = "Practice";
-    scores.style.opacity = .5;
+  if (aimode) {
+    dropdown.innerHTML = "Practice Mode";
+    scores.style.opacity = 0;
   } else {
-    dropdown.innerHTML = 'Versus AI';
+    dropdown.innerHTML = 'AI Mode';
     scores.style.opacity = 1;
   }
+  aimode = !aimode;
 }
 
 // Evaluate the current game state
